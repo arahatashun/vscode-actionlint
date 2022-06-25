@@ -1,0 +1,91 @@
+{
+  "name": "linter-actionlint",
+  "displayName": "actionlint",
+  "description": "Actionlint is a static checker for GitHub Actions workflow files.",
+  "version": "0.0.1",
+  "license": "MIT",
+  "homepage": "https://github.com/arahatashun/vscode-actionlint",
+  "publisher": "arahata",
+  "engines": {
+    "vscode": "^1.68.0"
+  },
+  "icon": "icons/icon-actionlint.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arahatashun/vscode-actionlint.git"
+  },
+  "bugs": {
+    "url": "https://github.com/arahatashun/vscode-actionlint/issues"
+  },
+  "categories": [
+    "Linters"
+  ],
+  "keywords": [
+    "github actions",
+    "lint"
+  ],
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "configuration": {
+      "properties": {
+        "linter-actionlint.config": {
+          "default": {
+            "capabilities": [],
+            "command": [
+              "actionlint",
+              "-format",
+              "'{{json .}}'",
+              "--stdin-filename",
+              "$file",
+              "-"
+            ],
+            "configFiles": [
+              "actionlint.yaml",
+              "actionlint.yml"
+            ],
+            "enabled": true,
+            "languages": [
+              "yaml"
+            ],
+            "name": "actionlint",
+            "url": "https://github.com/rhysd/actionlint"
+          },
+          "title": "The actionlint linter configuration",
+          "type": "object"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.2.0",
+    "@types/mocha": "^9.1.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.68.0",
+    "@typescript-eslint/eslint-plugin": "^5.27.0",
+    "@typescript-eslint/parser": "^5.27.0",
+    "@vscode/test-electron": "^2.1.3",
+    "eslint": "^8.16.0",
+    "glob": "^8.0.3",
+    "mocha": "^10.0.0",
+    "ts-loader": "^9.3.0",
+    "typescript": "^4.7.2",
+    "vscode-linter-api": "github:fnando/vscode-linter-api",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2"
+  },
+  "extensionDependencies": [
+    "fnando.linter"
+  ]
+}
