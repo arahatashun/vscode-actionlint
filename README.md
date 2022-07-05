@@ -8,5 +8,5 @@ vscode-actionlint is a GitHub Actions workflow files linter for [Visual Studio C
 
 ## Requirements
 
-- Install [actionlint](https://github.com/rhysd/actionlint)
+- Install [actionlint](https://github.com/rhysd/actionlint) >=  v1.6.14
 - Workflow files must be located under `.github/workflows`
