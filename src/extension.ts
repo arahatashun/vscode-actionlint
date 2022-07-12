@@ -10,7 +10,7 @@ export interface ActiontlintOffense {
 }
 
 export const getOffenses: LinterGetOffensesFunction = ({ uri, stdout }) => {
-  const regex = /.github\/workflows\/.*(.yml|.yaml)/g;
+  const regex = /(workflows\/|workflows\\).*(.yml|.yaml)/g;
   if (uri.path.match(regex) === null) {
     return [];
   }
